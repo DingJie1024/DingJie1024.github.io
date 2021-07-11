@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | DingJie1024</title>
+  <title>Springboot注解大全 | DingJie1024</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DingJie1024">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Springboot注解大全">
+<meta property="og:url" content="http://example.com/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/index.html">
 <meta property="og:site_name" content="DingJie1024">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/title_bg.jpg">
+<meta property="article:published_time" content="2021-07-11T07:32:12.000Z">
+<meta property="article:modified_time" content="2021-07-11T08:10:08.797Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Springboot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/title_bg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="DingJie1024" type="application/atom+xml">
   
@@ -155,36 +160,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Springboot注解大全" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/" class="archive-article-date">
-  	<time datetime="2021-07-11T07:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/">Springboot注解大全</a>
+    <h1 class="article-title" itemprop="name">
+      Springboot注解大全
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/" class="archive-article-date">
+  	<time datetime="2021-07-11T07:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/title_bg.jpg" class title="This is an title_bg image">
+<span id="more"></span>
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><ul>
+<li>@Documented：将会在被此注解注解的元素的javadoc文档中列出注解，一般都打上这个注解没坏处</li>
+<li>@Target：注解能被应用的目标元素，比如类、方法、属性、参数等等，需要仔细思考</li>
+<li>@Retention：仅在源码保留，还是保留到编译后的字节码，还是到运行时也去加载，超过90%的应用会在运行时去解析注解进行额外的处理，所以大部分情况我们都会设置配置为RetentionPolicy.RUNTIME</li>
+<li>@Inherited：如果子类没有定义注解的话，能自动从父类获取定义了继承属性的注解，比如Spring的@Service是没有继承特性的，但是@Transactional是有继承特性的，在OO继承体系中使用Spring注解的时候请特别注意这点，理所当然认为注解是能被子类继承的话可能会引起不必要的Bug，需要仔细斟酌是否开启继承</li>
+<li>@Repeatable：Java 8引入的特性，通过关联注解容器定义可重复注解，小小语法糖提高了代码可读性，对于元素有多个重复注解其实是很常见的事情，比如某方法可以是A角色可以访问也可以是B角色可以访问，某方法需要定时任务执行，要在A条件执行也需要在B条件执行</li>
+<li>@Native：是否在.h头文件中生成被标记的字段，除非原生程序需要和Java程序交互，否则很少会用到这个元注解</li>
+</ul>
+<h2 id="基本注解"><a href="#基本注解" class="headerlink" title="基本注解"></a>基本注解</h2><ul>
+<li>@Service: 注解在类上，表示这是一个业务层bean</li>
+<li>@Controller：注解在类上，表示这是一个控制层bean</li>
+<li>@Repository: 注解在类上，表示这是一个数据访问层bean</li>
+<li>@Component： 注解在类上，表示通用bean ，value不写默认就是类名首字母小写</li>
+<li>@Autowired：按类型注入.默认属性required= true</li>
+<li>@Resource: 按名称装配</li>
+</ul>
+<h2 id="启动注解"><a href="#启动注解" class="headerlink" title="启动注解"></a>启动注解</h2><ul>
+<li>@SpringBootApplication：包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中</li>
+<li>@ComponentScan：让spring Boot扫描到Configuration类并把它加入到程序上下文。</li>
+<li>@SpringBootConfiguration ：等同于spring的XML配置文件；使用Java代码可以检查类型安全。</li>
+<li>@EnableAutoConfiguration ：自动配置。</li>
+</ul>
+<h2 id="HTTP注解"><a href="#HTTP注解" class="headerlink" title="HTTP注解"></a>HTTP注解</h2><ul>
+<li>@RequestBody：HTTP请求获取请求体（处理复杂数据，比如JSON）</li>
+<li>@RequestHeader：HTTP请求获取请求头</li>
+<li>@CookieValue：HTTP请求获取cookie</li>
+<li>@SessionAttribute：HTTP请求获取会话</li>
+<li>@RequestAttribute：HTTP请求获取请求的Attribute中（比如过滤器和拦截器手动设置的一些临时数据），</li>
+<li>@RequestParam：HTTP请求获取请求参数（处理简单数据，键值对），</li>
+<li>@PathVariable：HTTP请求获取路径片段，</li>
+<li>@MatrixAttribute：HTTP请求获取矩阵变量允许我们采用特殊的规则在URL路径后加参数（分号区分不同参数，逗号为参数增加多个值）</li>
+</ul>
+<h2 id="其他注解"><a href="#其他注解" class="headerlink" title="其他注解"></a>其他注解</h2><ul>
+<li>@Transient：表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性。</li>
+<li>@ConfigurationProperties：给对象赋值，将注解转换成对象。</li>
+<li>@RequestMapping：和请求报文是做对应的</li>
+<li>@EnableCaching：注解驱动的缓存管理功能</li>
+<li>@GeneratedValue：用于标注主键的生成策略，通过 strategy 属性指定</li>
+<li>@JsonIgnore：作用是json序列化时将Java bean中的一些属性忽略掉,序列化和反序列化都受影响。</li>
+<li>@JoinColumn（name=”loginId”）:一对一：本表中指向另一个表的外键。一对多：另一个表指向本表的外键。</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,57 +263,115 @@
 		</ul>
 	</div>
 
-          
+      <!--显示阅读次数-->
+		
+		  <a class="cloud-tie-join-count" href="/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/" style="color:gray;font-size:14px;">
+		    <span class="icon-smile"></span>
+		    <span id="busuanzi_container_page_pv">
+		      阅读量(<span id="busuanzi_value_page_pv"></span>)
+		    </span>
+		  </a>
+		
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/07/11/Springboot%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%85%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/07/11/hexo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-07-11T01:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/07/11/hexo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo框架搭建个人博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/07/11/hexo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">hexo框架搭建个人博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">First 个人博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -278,8 +403,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
