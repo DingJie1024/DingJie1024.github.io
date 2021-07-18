@@ -18,8 +18,9 @@
 <meta property="og:image" content="http://example.com/2021/07/16/Spring-IOC/img02.png">
 <meta property="og:image" content="http://example.com/2021/07/16/Spring-IOC/img03.png">
 <meta property="og:image" content="http://example.com/2021/07/16/Spring-IOC/img04.png">
+<meta property="og:image" content="http://example.com/2021/07/16/Spring-IOC/img05.png">
 <meta property="article:published_time" content="2021-07-16T00:39:13.000Z">
-<meta property="article:modified_time" content="2021-07-16T03:40:38.746Z">
+<meta property="article:modified_time" content="2021-07-18T08:13:26.706Z">
 <meta property="article:author" content="Ding Jie">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -188,6 +189,7 @@
 <span id="more"></span>
 <h1 id="一、IOC-控制反转-概念和原理"><a href="#一、IOC-控制反转-概念和原理" class="headerlink" title="一、IOC(控制反转)概念和原理"></a>一、IOC(控制反转)概念和原理</h1><h2 id="1、什么是IOC"><a href="#1、什么是IOC" class="headerlink" title="1、什么是IOC"></a>1、什么是IOC</h2><ul>
 <li>控制反转，将对象的创建和对象之间的调用过程都交给Spring</li>
+<li>容器，管理所有的组件</li>
 <li>IOC目的：为了降低耦合度<br>代码实例：</li>
 </ul>
 <ol>
@@ -246,6 +248,50 @@
 </ul>
 </li>
 </ul>
+<h1 id="三、自动装配-Autowired"><a href="#三、自动装配-Autowired" class="headerlink" title="三、自动装配(@Autowired)"></a>三、自动装配(@Autowired)</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired:Spring会自动为这个属性赋值；</span><br><span class="line">            一定会区容器中找到这个属性对应的组件</span><br></pre></td></tr></table></figure>
+<h2 id="代码实例："><a href="#代码实例：" class="headerlink" title="代码实例："></a>代码实例：</h2><ul>
+<li>applicationContext.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="string"><span class="tag">        https://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">		http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="string"><span class="tag">        https://www.springframework.org/schema/context/spring-context.xsd&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span>   </span><br><span class="line">    <span class="comment">&lt;!-- 扫描edu.dj包下的所有组件 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;edu.dj&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>edu.dj.dao.BookDao<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveBook</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;保存图书&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>edu.dj.service.BookService<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookDao bookDao;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BookService正在调用BookDao保存图书&quot;</span>);</span><br><span class="line">        bookDao.saveBook();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>edu.dj.servlet.BookServlet<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookService bookService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        bookService.save();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>测试Test<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">        BookServlet bookServlet = context.getBean(BookServlet.class);</span><br><span class="line">        bookServlet.doGet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>打印结果<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BookService正在调用BookDao保存图书</span><br><span class="line">保存图书</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="自动赋值原理："><a href="#自动赋值原理：" class="headerlink" title="自动赋值原理："></a>自动赋值原理：</h2><ul>
+<li>第一步<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">private BookService bookService;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>先按照类型取容器中找到对应的组件；<code>bookService = context.getBean(BookService.class);</code><ul>
+<li>找到一个：找到就赋值</li>
+<li>没找到：抛异常</li>
+<li>找到多个：假如还有有一个<code>BookServiceExt extends BookService</code><ul>
+<li>按变量名作为id继续匹配；BookService(默认id:bookService),BookServiceExt(默认id:bookServiceExt)  <ul>
+<li>匹配上</li>
+<li>没有匹配:报错，原因：以变量名为id，bookServiceExt2没有匹配到这个id。  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Autowired</span><br><span class="line">private BookService bookServiceExt2</span><br></pre></td></tr></table></figure>
+  使用 <code>@Qualifier(&quot;bookServiceExt&quot;)</code> 不以变量名作为id，字符串作为指定的id。  <ul>
+<li>找到就装配，找不到就报错</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@Autowired找到装配，找不到报错  <ul>
+<li>required属性，false找不到自动装配null</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>@Autowired和@Resource  <ul>
+<li>@Autowired是spring自己的规定的，必须依赖spring框架</li>
+<li>@Resource是javax，Java规定的，扩展性强</li>
+</ul>
+</li>
+</ul>
+<h2 id="泛型依赖注入"><a href="#泛型依赖注入" class="headerlink" title="泛型依赖注入"></a>泛型依赖注入</h2><img src="/2021/07/16/Spring-IOC/img05.png" class title="This is an img05 image">
+
 
       
 
