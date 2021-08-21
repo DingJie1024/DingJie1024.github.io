@@ -29,6 +29,7 @@
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img13.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img14.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img15.png">
+<meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img32.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img16.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img17.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img18.png">
@@ -43,8 +44,12 @@
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img25.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img26.png">
 <meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img27.png">
+<meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img28.png">
+<meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img29.png">
+<meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img30.png">
+<meta property="og:image" content="http://example.com/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img31.png">
 <meta property="article:published_time" content="2021-08-15T01:18:27.000Z">
-<meta property="article:modified_time" content="2021-08-18T15:26:33.695Z">
+<meta property="article:modified_time" content="2021-08-21T06:43:08.745Z">
 <meta property="article:author" content="Ding Jie">
 <meta property="article:tag" content="JMS">
 <meta property="article:tag" content="ActiveMQ">
@@ -416,7 +421,11 @@
 </li>
 </ul>
 </li>
+<li><p>集群搭建规划表  </p>
+</li>
 </ul>
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img32.png" class title="This is an img32 image">
+
 <h3 id="3-2-1-创建3台集群目录"><a href="#3-2-1-创建3台集群目录" class="headerlink" title="3.2.1 创建3台集群目录"></a>3.2.1 创建3台集群目录</h3><img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img16.png" class title="This is an img16 image">
 
 <h3 id="3-2-2-修改管理控制台端口"><a href="#3-2-2-修改管理控制台端口" class="headerlink" title="3.2.2 修改管理控制台端口"></a>3.2.2 修改管理控制台端口</h3><ul>
@@ -466,9 +475,9 @@
 <img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img23.png" class title="This is an img23 image">  
 
 <img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img24.png" class title="This is an img24 image">  
+
+
 <ul>
-<li><p>启动activeMQ命令：<code>vim amq_batch.sh</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node01/bin</span><br><span class="line">./activemq start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node02/bin</span><br><span class="line">./activemq start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node03/bin</span><br><span class="line">./activemq start</span><br></pre></td></tr></table></figure></li>
 <li><p>在myzookeeper目录</p>
   <img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img25.png" class title="This is an img25 image">  
 <ul>
@@ -484,8 +493,33 @@
 <li><p>启动Zookeeper命令：<code>vim zk_batch.sh</code></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/myzookeeper/zk01/bin</span><br><span class="line">./zkServer.sh start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/myzookeeper/zk02/bin</span><br><span class="line">./zkServer.sh start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/myzookeeper/zk03/bin</span><br><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure></li>
 <li><p>检查命令：<code>ps -ef|grep zookeeper|grep -v grep|wc -l</code></p>
-<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img27.png" class title="This is an img27 image">  
-<h1 id="四、高级特性和面试考点"><a href="#四、高级特性和面试考点" class="headerlink" title="四、高级特性和面试考点"></a>四、高级特性和面试考点</h1></li>
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img27.png" class title="This is an img27 image">  </li>
+<li><p>启动activeMQ命令：<code>vim amq_batch.sh</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node01/bin</span><br><span class="line">./activemq start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node02/bin</span><br><span class="line">./activemq start</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/mq_cluster/mq_node03/bin</span><br><span class="line">./activemq start</span><br></pre></td></tr></table></figure>
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img28.png" class title="This is an img28 image">  </li>
+</ul>
+<h3 id="3-2-7-zk集群节点状态"><a href="#3-2-7-zk集群节点状态" class="headerlink" title="3.2.7 zk集群节点状态"></a>3.2.7 zk集群节点状态</h3><ul>
+<li>3台zk集群任意连接任意一台<br><code>./zkCli.sh -server 127.0.0.1:2191</code>  </li>
+</ul>
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img29.png" class title="This is an img29 image">  
+
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img30.png" class title="This is an img30 image">  
+<ul>
+<li>查看master<br>elected:0000000000表示为master，其他2个为salve  </li>
+</ul>
+<img src="/2021/08/15/ActiveMQ-%E9%AB%98%E7%BA%A7/img31.png" class title="This is an img31 image">  
+
+<h2 id="3-3-集群可用性测试"><a href="#3-3-集群可用性测试" class="headerlink" title="3.3 集群可用性测试"></a>3.3 集群可用性测试</h2><ul>
+<li><p>ActiveMQ的客户端只能访问Master的Broker，其他处于Slave的Broker不能访问，所以客户端连接的Broker应该使用<strong>failover协议</strong>(转移失败)</p>
+</li>
+<li><p>当一个ActiveMQ节点挂掉或者一个Zookeeper节点挂掉，ActiveMQ服务依然正常运转，如果仅剩一个ActiveMQ节点，由于不能选举Master，所以ActiveMQ不能正常运行；</p>
+</li>
+<li><p>同样的，如果Zookeeper仅剩一个节点活动，不管ActiveMQ各节点存活，ActiveMQ也不能正常提供服务。(ActiveMQ集群的高可用，依赖与zookeeper集群的高可用)</p>
+</li>
+</ul>
+<h3 id="3-3-1-干掉一个ActiveMQ节点，它会自动切换到另一个活着的"><a href="#3-3-1-干掉一个ActiveMQ节点，它会自动切换到另一个活着的" class="headerlink" title="3.3.1 干掉一个ActiveMQ节点，它会自动切换到另一个活着的"></a>3.3.1 干掉一个ActiveMQ节点，它会自动切换到另一个活着的</h3><h3 id="3-3-2-Java实例代码修改"><a href="#3-3-2-Java实例代码修改" class="headerlink" title="3.3.2 Java实例代码修改"></a>3.3.2 Java实例代码修改</h3><ul>
+<li>队列生产者<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MY_ACTIVEMQ_URL = <span class="string">&quot;failover:(tcp://192.168.10.100:61616,tcp://192.168.10.100:61617,tcp://192.168.10.100:61618)?randomize=false&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MY_QUEUE_NAME = <span class="string">&quot;queue-cluster&quot;</span>;</span><br></pre></td></tr></table></figure></li>
+<li>队列消费者<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MY_ACTIVEMQ_URL = <span class="string">&quot;failover:(tcp://192.168.10.100:61616,tcp://192.168.10.100:61617,tcp://192.168.10.100:61618)?randomize=false&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String MY_QUEUE_NAME = <span class="string">&quot;queue-cluster&quot;</span>;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -772,15 +806,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">拦截器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">io流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">拦截器</a>
               </li>
              
               <li class="article-tag-list-item">
